@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-kanit {
+  font-family: var(--font-kanit), sans-serif;
+}
+
+@keyframes translateY-animation {
+  0%, 100% {
+    transform: translateY(15px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-translate-y {
+  animation: translateY-animation 2s linear infinite;
+}
+
+
+.bg-square{
+  background: url(/assets/img/bg-square.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 95rem) {
+  .container {
+      max-width: 85rem;
+  }
+}
