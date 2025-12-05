@@ -155,8 +155,7 @@ export default function Home() {
             <h1 className="lg:text-[45px] text-[25px] font-semibold text-center font-kanit leading-none">
               You need more resources
               <br className="lg:block hidden" />
-              You need a <span className="text-[#c4262e]">ELEANTZ</span>{" "}
-              partner.
+              You need <span className="text-[#c4262e]">ELEANTZ</span>{" "}
             </h1>
 
             <p className="text-center text-[14px] lg:text-[20px] font-inter mt-8">
@@ -168,7 +167,7 @@ export default function Home() {
             className="flex justify-center transition-all duration-300 ease-out mb-10"
             style={isLargeScreen ? { gap: `${gap}px` } : { gap: "16px" }}
           >
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center">
+            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/carrot.svg"
                 alt="icon"
@@ -176,7 +175,7 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center">
+            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/shapes.svg"
                 alt="icon"
@@ -184,7 +183,7 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center">
+            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/amazon.svg"
                 alt="icon"
@@ -192,7 +191,7 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center">
+            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/target.svg"
                 alt="icon"
@@ -200,7 +199,7 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center">
+            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/cocl.svg"
                 alt="icon"
@@ -316,7 +315,7 @@ export default function Home() {
               {/* Left Side - Statistics */}
               <div className="grid grid-cols-2 gap-6">
                 {/* Managed Ad Spend */}
-                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white border-2 border-transparent">
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white border-2 border-transparent hover:shadow-[-5px_5px_10px_0px_rgba(0,0,0,0.3)] transition-all duration-1000" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
                     MANAGED AD SPEND
                   </p>
@@ -331,7 +330,7 @@ export default function Home() {
                 </div>
 
                 {/* Average Revenue Growth */}
-                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white border-2 border-transparent">
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white border-2 border-transparent hover:shadow-[-5px_5px_10px_0px_rgba(0,0,0,0.3)] transition-all duration-1000" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
                     AVERAGE REVENUE GROWTH
                   </p>
@@ -346,7 +345,7 @@ export default function Home() {
                 </div>
 
                 {/* Worked In Categories */}
-                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white col-span-2 border-2 border-transparent">
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white col-span-2 border-2 border-transparent hover:shadow-[-5px_5px_10px_0px_rgba(0,0,0,0.3)] transition-all duration-1000" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1200">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
                     WORKED IN
                   </p>
@@ -362,7 +361,7 @@ export default function Home() {
               </div>
 
               {/* Right Side - About Us */}
-              <div className="bg-[#c4262e] rounded-2xl p-8 lg:p-12 flex flex-col justify-center">
+              <div className="bg-[#c4262e] rounded-2xl p-8 lg:p-12 flex flex-col justify-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
                 <h2 className="text-[28px] lg:text-[42px] font-bold uppercase text-white font-kanit mb-6">
                   ABOUT US
                 </h2>
@@ -511,6 +510,7 @@ export default function Home() {
       <section className="bg-[#ecf2f6] bg-[url(/assets/img/bg-square.png)] bg-cover bg-center py-20">
         <div className="container mx-auto px-4">
           <div className="mb-10 max-w-full w-[1100px] mx-auto">
+            <p className="text-[11px] lg:text-[18px] font-semibold text-center font-inter uppercase tracking-wide text-black mb-3">Our Services</p>
             <h2 className="lg:text-[45px] text-[25px] font-semibold text-center font-kanit leading-none">
               Built by a team that cares about the work{" "}
               <span className="text-[#c4262e]">and the people behind it.</span>
