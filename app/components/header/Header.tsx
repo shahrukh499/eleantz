@@ -20,20 +20,18 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from '@mui/material'
 
 const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Marketing', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+  { name: 'Listing', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Operations', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+  { name: 'Sales & Analytics', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+  { name: 'Creative Strategy & Building', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
 ]
 const products2 = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Blogs', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+  { name: 'Case Studies', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -48,7 +46,7 @@ export default function Header() {
   const [isMobileDisclosure2Open, setIsMobileDisclosure2Open] = useState(false)
 
   return (
-    <header className="bg-gray-100 fixed top-5 left-0 right-0 z-50 mx-2 lg:mx-24 rounded-full">
+    <header className="bg-[#d2d2d2a5] backdrop-blur-[5px] shadow-[0_0_5px_0_rgba(0,0,0,0.1)] fixed top-5 left-0 right-0 z-50 mx-2 lg:mx-24 rounded-full">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:p-0 lg:px-8">
         <div className="flex lg:flex-1">
           <Link href="#" className="-m-1.5 p-1.5">
@@ -81,7 +79,7 @@ export default function Header() {
               type="button"
               className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 hover:text-gray-900 py-5"
             >
-              Product
+              Services
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-500" />
             </button>
 
@@ -108,7 +106,7 @@ export default function Header() {
                       </div>
                     ))}
                   </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-200 bg-gray-200">
+                  {/* <div className="grid grid-cols-2 divide-x divide-gray-200 bg-gray-200">
                     {callsToAction.map((item) => (
                       <Link
                         key={item.name}
@@ -119,19 +117,16 @@ export default function Header() {
                         {item.name}
                       </Link>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               )}
           </div>
 
           <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
-            Features
+            About Us
           </Link>
           <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
             Marketplace
-          </Link>
-          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
-            Company
           </Link>
           <div
             className="relative"
@@ -142,34 +137,34 @@ export default function Header() {
               type="button"
               className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 hover:text-gray-900 py-5"
             >
-              Product
+              Resources
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-500" />
             </button>
 
             {isPopover2Open && (
               <div
-                className="absolute top-13 left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-gray-100 outline-1 -outline-offset-1 outline-gray-900/10 transition-all duration-200 ease-out"
+                className="absolute top-13 left-32 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 overflow-hidden rounded-3xl bg-gray-100 outline-1 -outline-offset-1 outline-gray-900/10 transition-all duration-200 ease-out"
               >
                   <div className="p-4">
                     {products2.map((item) => (
                       <div
                         key={item.name}
-                        className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-200"
+                        className="group relative flex items-center gap-x-6 rounded-lg p-3 text-sm/6 hover:bg-gray-200"
                       >
-                        <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-200 group-hover:bg-gray-300">
+                       {/*  <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-200 group-hover:bg-gray-300">
                           <item.icon aria-hidden="true" className="size-6 text-gray-900 group-hover:text-gray-900" />
-                        </div>
+                        </div> */}
                         <div className="flex-auto">
                           <Link href={item.href} className="block font-semibold text-gray-900">
                             {item.name}
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-gray-900">{item.description}</p>
+                         {/*  <p className="mt-1 text-gray-900">{item.description}</p> */}
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-200 bg-gray-200">
+                  {/* <div className="grid grid-cols-2 divide-x divide-gray-200 bg-gray-200">
                     {callsToAction.map((item) => (
                       <Link
                         key={item.name}
@@ -180,13 +175,16 @@ export default function Header() {
                         {item.name}
                       </Link>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               )}
           </div>
+          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
+            Contact Us
+          </Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <button className="bg-orange-400 text-white px-8 py-1.5 rounded-full">Log in</button>
+            <Button variant="contained" className="text-white px-8 py-1.5 rounded-full" sx={{backgroundColor: '#c4262e', borderRadius:50}}>Enquiry Now</Button>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">

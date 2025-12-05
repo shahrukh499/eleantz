@@ -155,7 +155,7 @@ export default function Home() {
             <h1 className="lg:text-[45px] text-[25px] font-semibold text-center font-kanit leading-none">
               You need more resources
               <br className="lg:block hidden" />
-              You need a <span className="text-orange-400">ELEANTZ</span>{" "}
+              You need a <span className="text-[#c4262e]">ELEANTZ</span>{" "}
               partner.
             </h1>
 
@@ -212,7 +212,7 @@ export default function Home() {
           <div className="flex justify-center gap-4">
             <Link
               href="/"
-              className="text-[16px] font-inter font-semibold bg-[#f78b26] text-white px-4 py-2 rounded-full"
+              className="text-[16px] font-inter font-semibold bg-[#c4262e] text-white px-4 py-2 rounded-full"
             >
               The Team
             </Link>
@@ -316,7 +316,7 @@ export default function Home() {
               {/* Left Side - Statistics */}
               <div className="grid grid-cols-2 gap-6">
                 {/* Managed Ad Spend */}
-                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white">
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white border-2 border-transparent">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
                     MANAGED AD SPEND
                   </p>
@@ -331,7 +331,7 @@ export default function Home() {
                 </div>
 
                 {/* Average Revenue Growth */}
-                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white">
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white border-2 border-transparent">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
                     AVERAGE REVENUE GROWTH
                   </p>
@@ -346,7 +346,7 @@ export default function Home() {
                 </div>
 
                 {/* Worked In Categories */}
-                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white col-span-2">
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white col-span-2 border-2 border-transparent">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
                     WORKED IN
                   </p>
@@ -362,7 +362,7 @@ export default function Home() {
               </div>
 
               {/* Right Side - About Us */}
-              <div className="bg-[#f78b26] rounded-2xl p-8 lg:p-12 flex flex-col justify-center">
+              <div className="bg-[#c4262e] rounded-2xl p-8 lg:p-12 flex flex-col justify-center">
                 <h2 className="text-[28px] lg:text-[42px] font-bold uppercase text-white font-kanit mb-6">
                   ABOUT US
                 </h2>
@@ -382,7 +382,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 relative z-1 bg-linear-to-b from-[#f8fafc] to-[#f8fafc00] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[100px] before:h-full before:bg-linear-to-r before:from-[#fefefe] before:to-[#f8fafc00] before:z-10 after:content-[''] after:absolute after:top-0 after:right-0 after:w-[100px] after:h-full after:bg-linear-to-l after:from-[#fefefe] after:to-[#f8fafc00] after:z-10">
+      <section className="pb-12 relative z-1 bg-linear-to-b from-[#f8fafc] to-[#f8fafc00] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[100px] before:h-full before:bg-linear-to-r before:from-[#fefefe] before:to-[#f8fafc00] before:z-10 after:content-[''] after:absolute after:top-0 after:right-0 after:w-[100px] after:h-full after:bg-linear-to-l after:from-[#fefefe] after:to-[#f8fafc00] after:z-10">
+        <h2 className="text-[25px] lg:text-[35px] font-bold leading-none text-center font-kanit pb-10">Out Clients</h2>
         <Splide
           ref={splideRef}
           aria-label="Client Logos"
@@ -395,7 +396,6 @@ export default function Home() {
             drag: true,
             direction: "ltr",
             trimSpace: true,
-            focusableNodes: "a, button, textarea, input, select, iframe",
             live: true,
             arrows: false,
             pagination: false,
@@ -513,14 +513,14 @@ export default function Home() {
           <div className="mb-10 max-w-full w-[1100px] mx-auto">
             <h2 className="lg:text-[45px] text-[25px] font-semibold text-center font-kanit leading-none">
               Built by a team that cares about the work{" "}
-              <span className="text-orange-400">and the people behind it.</span>
+              <span className="text-[#c4262e]">and the people behind it.</span>
             </h2>
             <p className="text-center text-[14px] lg:text-[25px] font-inter mt-8">
               The values below shape everything we do. From how we hire, to how
               we show up for each other, to how we show up for our partners.
             </p>
           </div>
-          <div className="flex flex-wrap gap-y-3 max-w-full w-[1300px] mx-auto">
+          <div className="flex flex-wrap justify-center gap-y-4 max-w-full w-[1300px] mx-auto">
             <div className="w-full md:w-[50%] lg:w-[25%] px-2">
               <div
                 className="bg-white rounded-2xl p-10"
@@ -543,11 +543,11 @@ export default function Home() {
                   height={229}
                 />
                 <div className="mt-10">
-                  <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                    Better
+                  <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                    Marketing  
                   </h4>
-                  <h4 className="text-[25px] lg:text-[35px] text-[#f78b26] font-bold leading-none">
-                    Relationships
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    & Advertising
                   </h4>
                 </div>
               </div>
@@ -574,11 +574,11 @@ export default function Home() {
                   height={229}
                 />
                 <div className="mt-10">
-                  <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                    Better
+                    <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                    Listings
                   </h4>
-                  <h4 className="text-[25px] lg:text-[35px] text-[#f78b26] font-bold leading-none">
-                    Relationships
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    Management
                   </h4>
                 </div>
               </div>
@@ -605,11 +605,11 @@ export default function Home() {
                   height={229}
                 />
                 <div className="mt-10">
-                  <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                    Better
+                  <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                  Operations
                   </h4>
-                  <h4 className="text-[25px] lg:text-[35px] text-[#f78b26] font-bold leading-none">
-                    Relationships
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    Management
                   </h4>
                 </div>
               </div>
@@ -636,11 +636,104 @@ export default function Home() {
                   height={229}
                 />
                 <div className="mt-10">
-                  <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                    Better
+                  <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                    Sales 
                   </h4>
-                  <h4 className="text-[25px] lg:text-[35px] text-[#f78b26] font-bold leading-none">
-                    Relationships
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    & Analytics
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-[50%] lg:w-[25%] px-2">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="500"
+              >
+                <Image
+                  className="me-auto"
+                  src="/assets/icons/pemium.svg"
+                  alt="icon"
+                  width={40}
+                  height={40}
+                />
+                <Image
+                  className="mx-auto"
+                  src="/assets/img/tts.avif"
+                  alt="icon"
+                  width={200}
+                  height={229}
+                />
+                <div className="mt-10">
+                  <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                    Creative Strategy
+                  </h4>
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    & Building
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-[50%] lg:w-[25%] px-2">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1000"
+              >
+                <Image
+                  className="me-auto"
+                  src="/assets/icons/pemium.svg"
+                  alt="icon"
+                  width={40}
+                  height={40}
+                />
+                <Image
+                  className="mx-auto"
+                  src="/assets/img/tts.avif"
+                  alt="icon"
+                  width={200}
+                  height={229}
+                />
+                <div className="mt-10">
+                  <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                    Marketplace
+                  </h4>
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    Reimbursements
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-[50%] lg:w-[25%] px-2">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1500"
+              >
+                <Image
+                  className="me-auto"
+                  src="/assets/icons/pemium.svg"
+                  alt="icon"
+                  width={40}
+                  height={40}
+                />
+                <Image
+                  className="mx-auto"
+                  src="/assets/img/tts.avif"
+                  alt="icon"
+                  width={200}
+                  height={229}
+                />
+                <div className="mt-10">
+                  <h4 className="text-[20px] lg:text-[25px] font-bold leading-tight">
+                    Global Selling
+                  </h4>
+                  <h4 className="text-[20px] lg:text-[25px] text-[#c4262e] font-bold leading-tight">
+                    Management
                   </h4>
                 </div>
               </div>
@@ -761,7 +854,7 @@ export default function Home() {
         <div className="max-w-full w-[1100px] mx-auto mb-10 px-4">
           <h2 className="lg:text-[45px] text-[25px] font-bold text-center font-kanit leading-none mb-3">
             Tech that came from{" "}
-            <span className="text-orange-400">doing the work.</span>
+            <span className="text-[#c4262e]">doing the work.</span>
           </h2>
           <p className="text-[14px] lg:text-[23px] text-center">
             Our Head of Product, Dustin, wasn’t a developer. He just saw a gap
@@ -772,7 +865,7 @@ export default function Home() {
           <div className="flex justify-center mt-5">
             <Link
               href="#"
-              className="bg-orange-400 text-white font-bold px-5 py-3 rounded-full"
+              className="bg-[#c4262e] text-white font-bold px-5 py-3 rounded-full"
             >
               Explore Our Tech
             </Link>
