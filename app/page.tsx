@@ -2,14 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import AOS from "aos";
+import { clientLogo } from "./data/clientLogo";
 
 export default function Home() {
   const [gap, setGap] = useState(64);
   const [imageTransform, setImageTransform] = useState({ first: 0, third: 0 });
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [countedValues, setCountedValues] = useState({
+    managedSpend: 0,
+    revenueGrowth: 0,
+    categories: 0,
+  });
+  const [hasCounted, setHasCounted] = useState(false);
+  const splideRef = useRef<any>(null);
 
   useEffect(() => {
     AOS.init();
@@ -73,19 +82,86 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isLargeScreen]);
 
+  // Counting animation effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasCounted) {
+            setHasCounted(true);
+
+            // Animate to 24 million
+            const animateCount = (
+              target: number,
+              setter: (val: number) => void,
+              suffix: string = ""
+            ) => {
+              const duration = 2000;
+              const startTime = Date.now();
+              const startValue = 0;
+
+              const animate = () => {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentValue = Math.floor(
+                  startValue + (target - startValue) * easeOutQuart
+                );
+
+                setter(currentValue);
+
+                if (progress < 1) {
+                  requestAnimationFrame(animate);
+                } else {
+                  setter(target);
+                }
+              };
+
+              animate();
+            };
+
+            animateCount(24, (val) =>
+              setCountedValues((prev) => ({ ...prev, managedSpend: val }))
+            );
+            animateCount(146, (val) =>
+              setCountedValues((prev) => ({ ...prev, revenueGrowth: val }))
+            );
+            animateCount(30, (val) =>
+              setCountedValues((prev) => ({ ...prev, categories: val }))
+            );
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const targetElement = document.getElementById("stats-section");
+    if (targetElement) {
+      observer.observe(targetElement);
+    }
+
+    return () => {
+      if (targetElement) {
+        observer.unobserve(targetElement);
+      }
+    };
+  }, [hasCounted]);
+
   return (
     <main>
       <section className="bg-[#e1e7ec] pt-28 pb-12 bg-[url(/assets/img/bg-square.png)] bg-contain bg-center">
         <div className="container mx-auto px-4">
           <div className="py-10">
             <h1 className="lg:text-[45px] text-[25px] font-semibold text-center font-kanit leading-none">
-              You don't need a bigger team.
+              You need more resources
               <br className="lg:block hidden" />
-              You need a <span className="text-orange-400">BTR</span> one.
+              You need a <span className="text-orange-400">ELEANTZ</span>{" "}
+              partner.
             </h1>
 
             <p className="text-center text-[14px] lg:text-[20px] font-inter mt-8">
-              Retail Media's part science, part instinct. We're fluent in both.
+              We're a full-service agency that specializes in helping retailers
+              grow their business through retail media.
             </p>
           </div>
           <div
@@ -233,7 +309,124 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#e1e7ec] pt-12 pb-20">
+      <section id="stats-section" className="bg-[#f8fafc] py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-full w-[1200px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left Side - Statistics */}
+              <div className="grid grid-cols-2 gap-6">
+                {/* Managed Ad Spend */}
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white">
+                  <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
+                    MANAGED AD SPEND
+                  </p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[32px] lg:text-[48px] font-bold text-black font-kanit">
+                      {countedValues.managedSpend}
+                    </span>
+                    <span className="text-[14px] lg:text-[18px] font-bold text-black font-kanit">
+                      MILLION
+                    </span>
+                  </div>
+                </div>
+
+                {/* Average Revenue Growth */}
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white">
+                  <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
+                    AVERAGE REVENUE GROWTH
+                  </p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[32px] lg:text-[48px] font-bold text-black font-kanit">
+                      {countedValues.revenueGrowth}%
+                    </span>
+                    <span className="text-[14px] lg:text-[18px] font-bold text-black font-kanit">
+                      YOY
+                    </span>
+                  </div>
+                </div>
+
+                {/* Worked In Categories */}
+                <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white col-span-2">
+                  <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
+                    WORKED IN
+                  </p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[32px] lg:text-[48px] font-bold text-black font-kanit">
+                      {countedValues.categories}+
+                    </span>
+                    <span className="text-[14px] lg:text-[18px] font-bold text-black font-kanit">
+                      CATEGORIES
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side - About Us */}
+              <div className="bg-[#f78b26] rounded-2xl p-8 lg:p-12 flex flex-col justify-center">
+                <h2 className="text-[28px] lg:text-[42px] font-bold uppercase text-white font-kanit mb-6">
+                  ABOUT US
+                </h2>
+                <p className="text-white text-[16px] lg:text-[18px] font-inter leading-relaxed">
+                  We're not your typical Marketing Agency.
+                </p>
+                <p className="text-white text-[16px] lg:text-[18px] font-inter leading-relaxed mt-4">
+                  We're your dedicated full-service growth partner, turning
+                  clicks into conversions in a crowded marketplace. As an
+                  extension of your marketing team, we simplify your path to
+                  profitability on Amazon, so you can focus on growing your
+                  business.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 relative z-1 bg-linear-to-b from-[#f8fafc] to-[#f8fafc00] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[100px] before:h-full before:bg-linear-to-r before:from-[#fefefe] before:to-[#f8fafc00] before:z-10 after:content-[''] after:absolute after:top-0 after:right-0 after:w-[100px] after:h-full after:bg-linear-to-l after:from-[#fefefe] after:to-[#f8fafc00] after:z-10">
+        <Splide
+          ref={splideRef}
+          aria-label="Client Logos"
+          extensions={{ AutoScroll }}
+          options={{
+            type: "loop",
+            perPage: 6,
+            perMove: 1,
+            gap: ".5rem",
+            drag: true,
+            direction: "ltr",
+            trimSpace: true,
+            focusableNodes: "a, button, textarea, input, select, iframe",
+            live: true,
+            arrows: false,
+            pagination: false,
+            autoScroll: {
+              speed: 1,
+              pauseOnHover: true,
+              pauseOnFocus: false,
+            },
+            breakpoints: {
+              1024: {
+                perPage: 3,
+                perMove: 1,
+              },
+            },
+          }}
+        >
+          {clientLogo.map((item) => (
+            <SplideSlide key={item.id}>
+              <Image
+                className="mx-auto w-[90px] lg:w-[120px]"
+                src={item.image}
+                alt={item.name}
+                width={126}
+                height={90}
+              />
+            </SplideSlide>
+          ))}
+        </Splide>
+      </section>
+
+      {/*  <section className="bg-[#e1e7ec] pt-12 pb-20">
         <div className="container mx-auto px-4">
           <div className="mt-10 max-w-full w-[1200px] mx-auto bg-[#ecf2f6] bg-[url(/assets/img/bg-square.png)] bg-cover bg-center rounded-2xl p-10">
             <div className="relative max-w-full w-[800px] h-auto mx-auto">
@@ -313,7 +506,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="bg-[#ecf2f6] bg-[url(/assets/img/bg-square.png)] bg-cover bg-center py-20">
         <div className="container mx-auto px-4">
@@ -329,7 +522,12 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-y-3 max-w-full w-[1300px] mx-auto">
             <div className="w-full md:w-[50%] lg:w-[25%] px-2">
-              <div className="bg-white rounded-2xl p-10" data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-duration="500">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="500"
+              >
                 <Image
                   className="me-auto"
                   src="/assets/icons/pemium.svg"
@@ -355,7 +553,12 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-[50%] lg:w-[25%] px-2">
-              <div className="bg-white rounded-2xl p-10" data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1000"
+              >
                 <Image
                   className="me-auto"
                   src="/assets/icons/pemium.svg"
@@ -381,7 +584,12 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-[50%] lg:w-[25%] px-2">
-              <div className="bg-white rounded-2xl p-10" data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1500"
+              >
                 <Image
                   className="me-auto"
                   src="/assets/icons/pemium.svg"
@@ -407,7 +615,12 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-[50%] lg:w-[25%] px-2">
-              <div className="bg-white rounded-2xl p-10" data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-duration="2000">
+              <div
+                className="bg-white rounded-2xl p-10"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="2000"
+              >
                 <Image
                   className="me-auto"
                   src="/assets/icons/pemium.svg"
@@ -438,54 +651,109 @@ export default function Home() {
 
       <section className="py-12 bg-[#f8fafc]">
         <div className="container mx-auto px-4">
-                <div className="max-w-full w-[1100px] mx-auto">
-                  <h2 className="text-[25px] lg:text-[46px] font-semibold text-center font-kanit leading-none">Retail media <span className="text-orange-400">isn’t one-size-fits-all.</span></h2>
-                  <p className="text-[14px] lg:text-[23px] font-inter mt-8 text-center">No two retailers are the same. That’s why we customize every approach from strategy, to creative, and data are built for how each platform actually works.</p>
+          <div className="max-w-full w-[1100px] mx-auto">
+            <h2 className="text-[25px] lg:text-[46px] font-semibold text-center font-kanit leading-none">
+              Retail media{" "}
+              <span className="text-orange-400">isn’t one-size-fits-all.</span>
+            </h2>
+            <p className="text-[14px] lg:text-[23px] font-inter mt-8 text-center">
+              No two retailers are the same. That’s why we customize every
+              approach from strategy, to creative, and data are built for how
+              each platform actually works.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-y-3 mt-10">
+            <div className="w-full md:w-[50%] lg:w-[33.33%] px-2">
+              <div
+                className="bg-[#e1e7ec] rounded-2xl p-10 flex justify-center flex-col gap-y-5"
+                data-aos="fade-right"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="500"
+              >
+                <div>
+                  <Image
+                    src="/assets/icons/amazon_l.svg"
+                    alt="icon"
+                    width={100}
+                    height={40}
+                  />
                 </div>
-                <div className="flex flex-wrap justify-center gap-y-3 mt-10">
-                  <div className="w-full md:w-[50%] lg:w-[33.33%] px-2">
-                    <div className="bg-[#e1e7ec] rounded-2xl p-10 flex justify-center flex-col gap-y-5" data-aos="fade-right"  data-aos-anchor-placement="top-bottom" data-aos-duration="500">
-                      <div>
-                        <Image src="/assets/icons/amazon_l.svg" alt="icon" width={100} height={40} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Amazon Advertising</h4>
-                        <p className="text-[16px]">Amazon’s where we started and still where we go the deepest. From search to DSP to AMC, we use data to find what matters and act fast on it.</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <Link href='#' className="border px-3 py-1 rounded">See More</Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full md:w-[50%] lg:w-[33.33%] px-2">
-                    <div className="bg-[#e1e7ec] rounded-2xl p-10 flex justify-center flex-col gap-y-5" data-aos="fade-right"  data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
-                      <div>
-                        <Image src="/assets/icons/amazon_l.svg" alt="icon" width={100} height={40} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Amazon Advertising</h4>
-                        <p className="text-[16px]">Amazon’s where we started and still where we go the deepest. From search to DSP to AMC, we use data to find what matters and act fast on it.</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <Link href='#' className="border px-3 py-1 rounded">See More</Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full md:w-[50%] lg:w-[33.33%] px-2">
-                    <div className="bg-[#e1e7ec] rounded-2xl p-10 flex justify-center flex-col gap-y-5" data-aos="fade-right"  data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
-                      <div>
-                        <Image src="/assets/icons/amazon_l.svg" alt="icon" width={100} height={40} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Amazon Advertising</h4>
-                        <p className="text-[16px]">Amazon’s where we started and still where we go the deepest. From search to DSP to AMC, we use data to find what matters and act fast on it.</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <Link href='#' className="border px-3 py-1 rounded">See More</Link>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  <h4 className="font-semibold">Amazon Advertising</h4>
+                  <p className="text-[16px]">
+                    Amazon’s where we started and still where we go the deepest.
+                    From search to DSP to AMC, we use data to find what matters
+                    and act fast on it.
+                  </p>
                 </div>
+                <div className="flex justify-end">
+                  <Link href="#" className="border px-3 py-1 rounded">
+                    See More
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-[50%] lg:w-[33.33%] px-2">
+              <div
+                className="bg-[#e1e7ec] rounded-2xl p-10 flex justify-center flex-col gap-y-5"
+                data-aos="fade-right"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1000"
+              >
+                <div>
+                  <Image
+                    src="/assets/icons/amazon_l.svg"
+                    alt="icon"
+                    width={100}
+                    height={40}
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold">Amazon Advertising</h4>
+                  <p className="text-[16px]">
+                    Amazon’s where we started and still where we go the deepest.
+                    From search to DSP to AMC, we use data to find what matters
+                    and act fast on it.
+                  </p>
+                </div>
+                <div className="flex justify-end">
+                  <Link href="#" className="border px-3 py-1 rounded">
+                    See More
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-[50%] lg:w-[33.33%] px-2">
+              <div
+                className="bg-[#e1e7ec] rounded-2xl p-10 flex justify-center flex-col gap-y-5"
+                data-aos="fade-right"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1500"
+              >
+                <div>
+                  <Image
+                    src="/assets/icons/amazon_l.svg"
+                    alt="icon"
+                    width={100}
+                    height={40}
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold">Amazon Advertising</h4>
+                  <p className="text-[16px]">
+                    Amazon’s where we started and still where we go the deepest.
+                    From search to DSP to AMC, we use data to find what matters
+                    and act fast on it.
+                  </p>
+                </div>
+                <div className="flex justify-end">
+                  <Link href="#" className="border px-3 py-1 rounded">
+                    See More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

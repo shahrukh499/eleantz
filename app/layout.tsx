@@ -4,6 +4,7 @@ import "./globals.css";
 import '@splidejs/react-splide/css';
 import 'aos/dist/aos.css';
 import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body
         className={` ${inter.variable} ${kanit.variable} antialiased`}
       >
+        <Header/>
         {children}
         <Footer/>
       </body>
