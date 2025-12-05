@@ -7,6 +7,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import AOS from "aos";
 import { clientLogo } from "./data/clientLogo";
+import { testimonialData } from "./data/testimonialData";
 
 export default function Home() {
   const [gap, setGap] = useState(64);
@@ -852,6 +853,7 @@ export default function Home() {
 
       <section className="bg-[#e1e7ec] py-20">
         <div className="max-w-full w-[1100px] mx-auto mb-10 px-4">
+        <p className="text-[11px] lg:text-[18px] font-semibold text-center font-inter uppercase tracking-wide text-black mb-3">Testimonials</p>
           <h2 className="lg:text-[45px] text-[25px] font-bold text-center font-kanit leading-none mb-3">
             Tech that came from{" "}
             <span className="text-[#c4262e]">doing the work.</span>
@@ -862,14 +864,14 @@ export default function Home() {
             our in-house tech that keeps growing with our team and the partners
             we support every day.
           </p>
-          <div className="flex justify-center mt-5">
+          {/* <div className="flex justify-center mt-5">
             <Link
               href="#"
               className="bg-[#c4262e] text-white font-bold px-5 py-3 rounded-full"
             >
               Explore Our Tech
             </Link>
-          </div>
+          </div> */}
         </div>
         <div>
           <Splide
@@ -889,69 +891,29 @@ export default function Home() {
               },
             }}
           >
-            <SplideSlide>
-              <div className="w-full h-[500px] bg-[#ecf2f6] bg-[url('/assets/img/bg-square.png')] bg-cover bg-center rounded-2xl px-5 flex justify-center flex-col">
-                <div className="lg:flex items-center justify-center">
-                  <Image
-                    src="/assets/img/fft.avif"
-                    alt="Image 1"
-                    width={500}
-                    height={500}
-                  />
-                  <div>
-                    <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                      Reporting Built for Scale
-                    </h4>
-                    <p>
-                      Retail Media's part science, part instinct. We're fluent
-                      in both.
-                    </p>
+            {
+              testimonialData.map((item) => (
+                <SplideSlide key={item.id}>
+                  <div className="relative w-full h-auto lg:h-[400px] bg-[#ecf2f6] bg-[url('/assets/img/bg-square.png')] bg-cover bg-center rounded-2xl py-5 px-5 flex justify-center flex-col">
+                    <div>
+                      <Image
+                      className=""
+                          src={item.image}
+                        alt="Image 1"
+                        width={50}
+                        height={50}
+                      />
+                      <div>
+                        <p className="text-[14px] lg:text-[20px] font-inter italic my-5">
+                          {item.text}
+                        </p>
+                        <span className="text-[20px] text-[#c4262e] font-semibold">{item.company}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className="w-full h-[500px] bg-[#ecf2f6] bg-[url(/assets/img/bg-square.png)] bg-cover bg-center rounded-2xl px-5 flex justify-center flex-col">
-                <div className="lg:flex items-center justify-center">
-                  <Image
-                    src="/assets/img/fft.avif"
-                    alt="Image 1"
-                    width={500}
-                    height={500}
-                  />
-                  <div>
-                    <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                      Reporting Built for Scale
-                    </h4>
-                    <p>
-                      Retail Media's part science, part instinct. We're fluent
-                      in both.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className="w-full h-[500px] bg-[#ecf2f6] bg-[url(/assets/img/bg-square.png)] bg-cover bg-center rounded-2xl px-5 flex justify-center flex-col">
-                <div className="lg:flex items-center justify-center">
-                  <Image
-                    src="/assets/img/fft.avif"
-                    alt="Image 1"
-                    width={500}
-                    height={500}
-                  />
-                  <div>
-                    <h4 className="text-[25px] lg:text-[35px] font-bold leading-none">
-                      Reporting Built for Scale
-                    </h4>
-                    <p>
-                      Retail Media's part science, part instinct. We're fluent
-                      in both.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SplideSlide>
+                </SplideSlide>
+              ))
+            }
           </Splide>
         </div>
       </section>
