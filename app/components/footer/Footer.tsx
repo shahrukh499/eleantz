@@ -55,22 +55,22 @@ function Footer() {
                         <h3 className='font-bold mb-5'>Socials</h3>
                         <div>
                             <ul className='flex gap-x-3'>
-                                <li className='bg-orange-400 rounded flex justify-center flex-col'>
+                                <li className='bg-[#c4262e] rounded flex justify-center flex-col'>
                                     <Link href='/' className='text-[13px] p-3'>
                                         <Image src='/assets/icons/tiktok.svg' alt='facebook' width={20} height={20} />
                                     </Link>
                                 </li>
-                                <li className='bg-orange-400 rounded flex justify-center flex-col'>
+                                <li className='bg-[#c4262e] rounded flex justify-center flex-col'>
                                     <Link href='/' className='text-[13px] p-3'>
                                         <Image src='/assets/icons/facebook.svg' alt='facebook' width={20} height={20} />
                                     </Link>
                                 </li>
-                                <li className='bg-orange-400 rounded flex justify-center flex-col'>
+                                <li className='bg-[#c4262e] rounded flex justify-center flex-col'>
                                     <Link href='/' className='text-[13px] p-3'>
                                         <Image src='/assets/icons/linkedin.svg' alt='facebook' width={20} height={20} />
                                     </Link>
                                 </li>
-                                <li className='bg-orange-400 rounded flex justify-center flex-col'>
+                                <li className='bg-[#c4262e] rounded flex justify-center flex-col'>
                                     <Link href='/' className='text-[13px] p-3'>
                                         <Image src='/assets/icons/instagram.svg' alt='facebook' width={20} height={20} />
                                     </Link>

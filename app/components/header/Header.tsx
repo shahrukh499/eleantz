@@ -23,11 +23,11 @@ import Image from 'next/image'
 import { Button } from '@mui/material'
 
 const products = [
-  { name: 'Marketing', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Listing', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Operations', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Sales & Analytics', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Creative Strategy & Building', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Marketing & Advertising', description: 'Performance-driven advertising built to scale profitably.', href: '#', icon: ChartPieIcon },
+  { name: 'Listing & Operations', description: 'Optimized listings and seamless operations engineered for growth.', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Sales & Analytics', description: 'Actionable insights that turn data into revenue decisions.', href: '#', icon: SquaresPlusIcon },
+  { name: 'Creative Strategy & Branding', description: 'Conversion-led creative that elevates your brand and drives sales.', href: '#', icon: ArrowPathIcon },
+  { name: '3P Selling', description: 'End-to-end retail management to expand and scale through 3P channels.', href: '#', icon: ArrowPathIcon },
 ]
 const products2 = [
   { name: 'Blogs', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -77,7 +77,7 @@ export default function Header() {
           >
             <button
               type="button"
-              className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 hover:text-gray-900 py-5"
+              className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 hover:text-gray-900 py-5 uppercase"
             >
               Services
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-500" />
@@ -122,11 +122,8 @@ export default function Header() {
               )}
           </div>
 
-          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
+          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5 uppercase">
             About Us
-          </Link>
-          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
-            Marketplace
           </Link>
           <div
             className="relative"
@@ -135,7 +132,7 @@ export default function Header() {
           >
             <button
               type="button"
-              className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 hover:text-gray-900 py-5"
+              className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 hover:text-gray-900 py-5 uppercase"
             >
               Resources
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-500" />
@@ -143,7 +140,7 @@ export default function Header() {
 
             {isPopover2Open && (
               <div
-                className="absolute top-13 left-32 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 overflow-hidden rounded-3xl bg-gray-100 outline-1 -outline-offset-1 outline-gray-900/10 transition-all duration-200 ease-out"
+                className="absolute top-13 left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-gray-100 outline-1 -outline-offset-1 outline-gray-900/10 transition-all duration-200 ease-out"
               >
                   <div className="p-4">
                     {products2.map((item) => (
@@ -151,15 +148,15 @@ export default function Header() {
                         key={item.name}
                         className="group relative flex items-center gap-x-6 rounded-lg p-3 text-sm/6 hover:bg-gray-200"
                       >
-                       {/*  <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-200 group-hover:bg-gray-300">
+                        <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-200 group-hover:bg-gray-300">
                           <item.icon aria-hidden="true" className="size-6 text-gray-900 group-hover:text-gray-900" />
-                        </div> */}
+                        </div>
                         <div className="flex-auto">
                           <Link href={item.href} className="block font-semibold text-gray-900">
                             {item.name}
                             <span className="absolute inset-0" />
                           </Link>
-                         {/*  <p className="mt-1 text-gray-900">{item.description}</p> */}
+                          <p className="mt-1 text-gray-900">{item.description}</p>
                         </div>
                       </div>
                     ))}
@@ -179,12 +176,12 @@ export default function Header() {
                 </div>
               )}
           </div>
-          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5">
+          <Link href="#" className="text-sm/6 font-semibold text-gray-900 py-5 uppercase">
             Contact Us
           </Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Button variant="contained" className="text-white px-8 py-1.5 rounded-full" sx={{backgroundColor: '#c4262e', borderRadius:50}}>Enquiry Now</Button>
+            <Button variant="contained" className="text-white px-8 py-1.5 rounded-full" sx={{backgroundColor: '#c4262e', borderRadius:50}}>Book a session</Button>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -236,12 +233,6 @@ export default function Header() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
                 >
                   About Us
-                </Link>
-                <Link
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
-                >
-                  Marketplace
                 </Link>
                 <Disclosure as="div" className="-mx-3">
                   <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-200">

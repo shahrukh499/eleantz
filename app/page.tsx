@@ -127,7 +127,7 @@ export default function Home() {
             animateCount(146, (val) =>
               setCountedValues((prev) => ({ ...prev, revenueGrowth: val }))
             );
-            animateCount(30, (val) =>
+            animateCount(60, (val) =>
               setCountedValues((prev) => ({ ...prev, categories: val }))
             );
           }
@@ -150,33 +150,48 @@ export default function Home() {
 
   return (
     <main>
-      <section className="bg-[#e1e7ec] pt-28 pb-12 bg-[url(/assets/img/bg-square.png)] bg-contain bg-center">
-        <div className="container mx-auto px-4">
+      <section className="bg-[#e1e7ec] pt-28 pb-20 h-screen relative overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover object-center z-0 opacity-20"
+        >
+          <source src="/assets/video/vd1.mp4" type="video/mp4" />
+        </video>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="py-10">
-            <h1 className="lg:text-[45px] text-[25px] font-semibold text-center font-kanit leading-none">
-              You need more resources
+            <h1 className="lg:text-[70px] text-[25px] font-semibold text-center font-kanit ">
+              You don't need another agency
               <br className="lg:block hidden" />
-              You need <span className="text-[#c4262e]">ELEANTZ</span>{" "}
+              You need a <span className="text-[#c4262e]">strategic partner</span>{" "}
             </h1>
-
-            <p className="text-center text-[14px] lg:text-[20px] font-inter mt-8">
-              We're a full-service agency that specializes in helping retailers
-              grow their business through retail media.
+            <p className="text-center text-[14px] lg:text-[25px] font-inter mt-10">
+             We don’t just manage your brand, we build what your competitors wish they had.
             </p>
           </div>
           <div
-            className="flex justify-center transition-all duration-300 ease-out mb-10"
+            className="flex justify-center transition-all duration-300 ease-out mb-10 mt-15"
             style={isLargeScreen ? { gap: `${gap}px` } : { gap: "16px" }}
           >
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
+           {/*  <div className="border-2 border-[#c4262e] w-24 h-24 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
-                src="/assets/icons/carrot.svg"
+                src="/assets/icons/ebay.png"
                 alt="icon"
-                width={40}
+                width={80}
+                height={40}
+              />
+            </div> */}
+            <div className="border-2 border-[#c4262e] w-24 h-24 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
+              <Image
+                src="/assets/icons/ebay.png"
+                alt="icon"
+                width={80}
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
+            <div className="border-2 border-[#c4262e] w-24 h-24 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/shapes.svg"
                 alt="icon"
@@ -184,7 +199,7 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
+            <div className="border-2 border-[#c4262e] w-24 h-24 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/amazon.svg"
                 alt="icon"
@@ -192,7 +207,7 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
+            <div className="border-2 border-[#c4262e] w-24 h-24 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
                 src="/assets/icons/target.svg"
                 alt="icon"
@@ -200,31 +215,31 @@ export default function Home() {
                 height={40}
               />
             </div>
-            <div className="bg-[#f8fafc] w-16 h-16 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
+            <div className="border-2 border-[#c4262e] w-24 h-24 rounded-2xl p-4 flex items-center justify-center hover:translate-y-[-10px] transition-all duration-300 ease-out">
               <Image
-                src="/assets/icons/cocl.svg"
+                src="/assets/icons/etsy.png"
                 alt="icon"
-                width={40}
+                width={80}
                 height={40}
               />
             </div>
           </div>
           <div className="flex justify-center gap-4">
-            <Link
+           {/*  <Link
               href="/"
               className="text-[16px] font-inter font-semibold bg-[#c4262e] text-white px-4 py-2 rounded-full"
             >
               The Team
-            </Link>
+            </Link> */}
             <Link
               href="/"
-              className="text-[16px] font-inter font-semibold bg-[#000000] text-white px-4 py-2 rounded-full"
+              className="text-[16px] font-inter font-semibold bg-[#000000] text-white px-4 py-2 rounded-full uppercase hover:bg-[#c4262e] transition-all duration-300 ease-out"
             >
-              The Result
+              Get a free audit
             </Link>
           </div>
         </div>
-        <div
+        {/* <div
           className="mt-10"
           style={{
             width: "auto",
@@ -306,7 +321,7 @@ export default function Home() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section id="stats-section" className="bg-[#f8fafc] py-20">
@@ -348,14 +363,14 @@ export default function Home() {
                 {/* Worked In Categories */}
                 <div className="stat-box rounded-2xl p-6 lg:p-8 bg-white col-span-2 border-2 border-transparent hover:shadow-[-5px_5px_10px_0px_rgba(0,0,0,0.3)] transition-all duration-1000" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1200">
                   <p className="text-[11px] lg:text-[13px] font-inter uppercase tracking-wide text-black mb-3">
-                    WORKED IN
+                    WORKED WITH
                   </p>
                   <div className="flex items-baseline gap-1">
                     <span className="text-[32px] lg:text-[48px] font-bold text-black font-kanit">
                       {countedValues.categories}+
                     </span>
                     <span className="text-[14px] lg:text-[18px] font-bold text-black font-kanit">
-                      CATEGORIES
+                      BRANDS
                     </span>
                   </div>
                 </div>
@@ -367,14 +382,10 @@ export default function Home() {
                   ABOUT US
                 </h2>
                 <p className="text-white text-[16px] lg:text-[18px] font-inter leading-relaxed">
-                  We're not your typical Marketing Agency.
+                  Our philosophy is simple: <br/><span className="font-bold">Partnership</span> &gt; <span className="font-bold">Outsourcing</span> 
                 </p>
                 <p className="text-white text-[16px] lg:text-[18px] font-inter leading-relaxed mt-4">
-                  We're your dedicated full-service growth partner, turning
-                  clicks into conversions in a crowded marketplace. As an
-                  extension of your marketing team, we simplify your path to
-                  profitability on Amazon, so you can focus on growing your
-                  business.
+                 EleAntz integrates with your workflows, understands your business DNA, and builds long-term value with you — not for you. We track your numbers like they’re ours, challenge assumptions when needed, and move fast when the market shifts. Because that’s what real partners do.
                 </p>
               </div>
             </div>
@@ -383,7 +394,7 @@ export default function Home() {
       </section>
 
       <section className="pb-12 relative z-1 bg-linear-to-b from-[#f8fafc] to-[#f8fafc00] before:content-[''] before:absolute before:top-0 before:left-0 before:w-[100px] before:h-full before:bg-linear-to-r before:from-[#fefefe] before:to-[#f8fafc00] before:z-10 after:content-[''] after:absolute after:top-0 after:right-0 after:w-[100px] after:h-full after:bg-linear-to-l after:from-[#fefefe] after:to-[#f8fafc00] after:z-10">
-        <h2 className="text-[25px] lg:text-[35px] font-bold leading-none text-center font-kanit pb-10">Out Clients</h2>
+        <h2 className="text-[25px] lg:text-[35px] font-bold leading-none text-center font-kanit pb-10">Our Clients</h2>
         <Splide
           ref={splideRef}
           aria-label="Client Logos"
@@ -743,7 +754,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 bg-[#f8fafc]">
+      {/* <section className="py-12 bg-[#f8fafc]">
         <div className="container mx-auto px-4">
           <div className="max-w-full w-[1100px] mx-auto">
             <h2 className="text-[25px] lg:text-[46px] font-semibold text-center font-kanit leading-none">
@@ -849,9 +860,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="bg-[#e1e7ec] py-20">
+     {/*  <section className="bg-[#e1e7ec] py-20">
         <div className="max-w-full w-[1100px] mx-auto mb-10 px-4">
         <p className="text-[11px] lg:text-[18px] font-semibold text-center font-inter uppercase tracking-wide text-black mb-3">Testimonials</p>
           <h2 className="lg:text-[45px] text-[25px] font-bold text-center font-kanit leading-none mb-3">
@@ -864,14 +875,14 @@ export default function Home() {
             our in-house tech that keeps growing with our team and the partners
             we support every day.
           </p>
-          {/* <div className="flex justify-center mt-5">
+          <div className="flex justify-center mt-5">
             <Link
               href="#"
               className="bg-[#c4262e] text-white font-bold px-5 py-3 rounded-full"
             >
               Explore Our Tech
             </Link>
-          </div> */}
+          </div>
         </div>
         <div>
           <Splide
@@ -916,7 +927,7 @@ export default function Home() {
             }
           </Splide>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
